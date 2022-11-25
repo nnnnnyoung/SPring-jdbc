@@ -1,5 +1,7 @@
 package com.human.DAO;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -19,6 +21,11 @@ public class BoardDAOImpl implements IF_boardDAO{
 	public void insertOne(BoardVO boardvo) throws Exception{
 		sqlSession.insert(mapperQuery+".insertOne", boardvo); // 쿼리를 매핑 및 실행한다.
 				//insert  //매핑정보          //id			//parameter
+	}
+	@Override
+	public List<BoardVO> selectAll() throws Exception {
+		return sqlSession.selectList(mapperQuery+".selectAll");
+		//selectOne은 DAO 메서드명이 아닌 프로그램 자체에서 select 하기 위한 메서드  
 	}
 	
 

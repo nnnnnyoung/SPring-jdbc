@@ -9,6 +9,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		#{pass},default,default)
 	
 	</insert>
-
+	<!--   쿼리문, 파라미터 , 리턴값 >> 조금 더 깊이 자료형이 무엇인가? 파라미터는 객체 ? String ? Integer?
+		리턴값은 단일 객체인가 String? Integer? List -->
+		
+	<select id="selectAll" resultType="com.human.VO.BoardVO">
+		select * from bboard
+	
+	</select>
 
 </mapper>

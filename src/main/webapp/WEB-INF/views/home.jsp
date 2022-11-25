@@ -13,7 +13,7 @@
 <header> Spring BBS</header>
 
 <nav>
-[home] <a href="wrForm">[Write]</a> [BBSList] <a href="joinForm">[회원가입]</a>
+[home] <a href="wrForm">[Write]</a>  <a href="bbsList">[BBSList]</a> <a href="joinForm">[회원가입]</a>
 
 
 </nav>

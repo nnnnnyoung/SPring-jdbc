@@ -1,5 +1,6 @@
 package com.human.cafe;
 
+import java.util.List;
 import java.util.Locale;
 
 import javax.inject.Inject;
@@ -21,17 +22,25 @@ public class BbsController {
 	public String wrAction(Locale locale, Model model, BoardVO bvo) throws Exception{
 		System.out.println(bvo.getName()+"확인");
 		brsv.insertOne(bvo);
-		return "home";
+		return "redirect:/bbsList";
+	}
+	@RequestMapping(value = "/bbsList", method = RequestMethod.GET)
+	public String bbsList(Locale locale, Model model, BoardVO bvo )throws Exception {
+		//a 태그에서 넘어옴 a 태그는 get방식
+		List blist=brsv.selectAll();
+		System.out.println(brsv.selectAll().size()+"게시글 전체 확인");
+		model.addAttribute("bList",blist) ;
+		return "bbs/bbsList";
 	}
 	@RequestMapping(value = "/wrForm", method = RequestMethod.GET)
 	public String wrForm(Locale locale, Model model) {
 		//a 태그에서 넘어옴 a 태그는 get방식
-		return "wrForm";
+		return "bbs/wrForm";
 	}
 	
 	@RequestMapping(value = "/joinForm", method = RequestMethod.GET)
 	public String joinForm(Locale locale, Model model) {
 		//a 태그에서 넘어옴 a 태그는 get방식
-		return "joinForm";
+		return "bbs/joinForm";
 	}
 }
