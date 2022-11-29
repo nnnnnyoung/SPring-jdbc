@@ -12,8 +12,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!--   쿼리문, 파라미터 , 리턴값 >> 조금 더 깊이 자료형이 무엇인가? 파라미터는 객체 ? String ? Integer?
 		리턴값은 단일 객체인가 String? Integer? List -->
 		
-	<select id="selectAll" resultType="com.human.VO.BoardVO">
-		select * from bboard
+	<select id="selectAll" resultType="com.human.VO.BoardVO"> <!-- 파라미터 타입 생략가능 -->
+		select t.* from (select sub.*, rownum as rnum from(select * from bboard order by num desc) sub) t where rnum between #{startNo} and #{endNo}
+	
+	</select>
+	
+	<select id="countBoard" resultType="int">
+		select count(*) from bboard
 	
 	</select>
 

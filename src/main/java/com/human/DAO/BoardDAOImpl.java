@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.human.VO.BoardVO;
+import com.human.VO.PageVO;
 @Repository //dao단임을 알려준다. 
 public class BoardDAOImpl implements IF_boardDAO{
 	private static String mapperQuery="com.human.DAO.IF_boardDAO"; //매핑인터페이스 경로 설정
@@ -23,9 +24,14 @@ public class BoardDAOImpl implements IF_boardDAO{
 				//insert  //매핑정보          //id			//parameter
 	}
 	@Override
-	public List<BoardVO> selectAll() throws Exception {
-		return sqlSession.selectList(mapperQuery+".selectAll");
+	public List<BoardVO> selectAll(PageVO pageVO) throws Exception {
+		return sqlSession.selectList(mapperQuery+".selectAll", pageVO);
 		//selectOne은 DAO 메서드명이 아닌 프로그램 자체에서 select 하기 위한 메서드  
+	}
+	@Override
+	public int countBoard() throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(mapperQuery+".countBoard");
 	}
 	
 

@@ -1,4 +1,4 @@
-package com.human.cafe;
+package com.human.human;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -38,7 +38,7 @@ public class HomeController {
 //		String formattedDate = dateFormat.format(date);
 //		
 //		model.addAttribute("serverTime", formattedDate );
-		
+		System.out.println(" / 컨트롤러 처리");
 		return "home";
 	}
 	
